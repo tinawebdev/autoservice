@@ -1,0 +1,14 @@
+<%= form_with(model:category) do |form| %>
+  <%= render "partials/errors", object: category %>
+
+  <div>
+    <%= form.label :name, "Имя категории", style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <% if category.new_record? %>
+    <%= form.submit "Добавить" %>
+  <% else %>
+    <%= form.submit "Обновить" %>
+  <% end %>
+<% end %>
