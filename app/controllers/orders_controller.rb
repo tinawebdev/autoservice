@@ -6,7 +6,8 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @mechanic =  Mechanic.find_by(id: @order.mechanic_id)
+    @mechanic = Mechanic.find_by(id: @order.mechanic_id)
+    @services = @order.services
   end
 
   def new
@@ -35,7 +36,7 @@ class OrdersController < ApplicationController
 
   def destroy
     @order.destroy
-    redirect_to order_url, notice: "Заказ успешно удален"
+    redirect_to orders_url, notice: "Заказ успешно удален"
   end
 
   private
@@ -44,6 +45,6 @@ class OrdersController < ApplicationController
     end
 
     def order_params
-      params.require(:order).permit(:created_at, :customer, :mechanic_id)
+      params.require(:order).permit(:created_at, :customer, :mechanic_id, service_ids: [])
     end
 end

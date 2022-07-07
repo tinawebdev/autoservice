@@ -11,6 +11,10 @@
     <%= form.collection_select(:mechanic_id, Mechanic.all, :id, :name, :prompt => 'Выбрать исполнителя') %>
   </div>
 
+  <div>
+    <%= form.collection_check_boxes(:service_ids, Service.all, :id, :title) %>
+  </div>
+
   <% if order.new_record? %>
     <%= form.submit "Добавить" %>
   <% else %>

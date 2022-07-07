@@ -4,6 +4,19 @@
 <p>Исполнитель: <%= link_to @mechanic.name, @mechanic %></p>
 
 <div>
+  <% if @services.present? %>
+    <h4>Услуги</h4>
+    <ul>
+      <% @services.each do |c| %>
+        <li>
+          <%= c.title %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
+
+<div>
   <%= link_to "Редактировать", edit_order_path(@order) %> |
   <%= link_to "Назад", :back %>
 
