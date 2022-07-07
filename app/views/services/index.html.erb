@@ -1,0 +1,12 @@
+<h1>Список услуг</h1>
+
+<div id="services">
+  <% @services.each do |service| %>
+    <%= render service %>
+    <p>
+      <%= link_to "Посмотреть", service %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "Создать новую услугу", new_service_path %>

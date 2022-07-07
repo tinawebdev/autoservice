@@ -1,0 +1,10 @@
+<%= render @service %>
+
+<p>Категория: <%= link_to @category.name, @category %></p>
+
+<div>
+  <%= link_to "Редактировать", edit_service_path(@service) %> |
+  <%= link_to "Назад", :back %>
+
+  <%= button_to "Удалить", @order, method: :delete %>
+</div>
