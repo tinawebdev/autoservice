@@ -1,0 +1,19 @@
+<%= form_with(model:order) do |form| %>
+  <%= render "partials/errors", object: order %>
+
+  <div>
+    <%= form.label :customer, "Заказчик", style: "display: block" %>
+    <%= form.text_field :customer %>
+  </div>
+
+  <div>
+    <%= form.label :mechanic, "Исполнитель", style: "display: block" %>
+    <%= form.collection_select(:mechanic_id, Mechanic.all, :id, :name, :prompt => 'Выбрать исполнителя') %>
+  </div>
+
+  <% if order.new_record? %>
+    <%= form.submit "Добавить" %>
+  <% else %>
+    <%= form.submit "Обновить" %>
+  <% end %>
+<% end %>

@@ -1,0 +1,11 @@
+<%= render @order %>
+
+<p>Заказчик: <%= @order.customer %></p>
+<p>Исполнитель: <%= link_to @mechanic.name, @mechanic %></p>
+
+<div>
+  <%= link_to "Редактировать", edit_order_path(@order) %> |
+  <%= link_to "Назад", :back %>
+
+  <%= button_to "Удалить", @order, method: :delete %>
+</div>

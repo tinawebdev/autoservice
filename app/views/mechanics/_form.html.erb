@@ -1,15 +1,5 @@
 <%= form_with(model: mechanic) do |form| %>
-  <% if mechanic.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(mechanic.errors.count, "error") %></h2>
-
-      <ul>
-        <% mechanic.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render "partials/errors", object: mechanic %>
 
   <div>
     <%= form.label :name, "Имя", style: "display: block" %>

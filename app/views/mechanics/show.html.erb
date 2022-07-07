@@ -4,7 +4,7 @@
 
 <div>
   <%= link_to "Редактировать", edit_mechanic_path(@mechanic) %> |
-  <%= link_to "Назад", mechanics_path %>
+  <%= link_to "Назад", :back %>
 
   <%= button_to "Удалить", @mechanic, method: :delete %>
 </div>

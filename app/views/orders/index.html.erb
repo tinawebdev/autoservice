@@ -1,0 +1,12 @@
+<h1>Список заказов</h1>
+
+<div id="orders">
+  <% @orders.each do |order| %>
+    <%= render order %>
+    <p>
+      <%= link_to "Посмотреть", order %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "Добавить", new_order_path %>
