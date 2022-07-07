@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Список исполнителей</h1>
+
+<div id="mechanics">
+  <% @mechanics.each do |mechanic| %>
+    <%= render mechanic %>
+    <p>
+      <%= link_to "Посмотреть", mechanic %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "Добавить", new_mechanic_path %>

@@ -1,0 +1,24 @@
+<%= form_with(model: mechanic) do |form| %>
+  <% if mechanic.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(mechanic.errors.count, "error") %></h2>
+
+      <ul>
+        <% mechanic.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, "Имя", style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <% if mechanic.new_record? %>
+    <%= form.submit "Добавить" %>
+  <% else %>
+    <%= form.submit "Обновить" %>
+  <% end %>
+<% end %>
