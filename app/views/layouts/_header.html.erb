@@ -1,0 +1,23 @@
+<div class="hero-head">
+  <header class="navbar">
+    <div class="container">
+      <div class="navbar-brand">
+        <p class="navbar-item" href="#">
+          <img src="https://www.designfreelogoonline.com/wp-content/uploads/2020/08/00422-car-01.png" width="112" height="28" alt="Logo">
+        </p>
+      </div>
+      <div id="navbarMenuHeroC" class="navbar-menu">
+        <div class="navbar-end">
+          <%= link_to "Главная", root_path, class: "navbar-item #{current_class?(root_path)}" %>
+          <%= link_to "Все заказы", orders_path, class: "navbar-item #{current_class?(orders_path)}" %>
+          <%= link_to "Список услуг", services_path, class: "navbar-item #{current_class?(services_path)}" %>
+          <%= link_to "Категории", categories_path, class: "navbar-item #{current_class?(categories_path)}" %>
+          <%= link_to "Исполнители", mechanics_path, class: "navbar-item #{current_class?(mechanics_path)}" %>
+          <span class="navbar-item">
+            <%= link_to "Создать новый заказ", new_order_path, class: "button is-dark" %>
+          </span>
+        </div>
+      </div>
+    </div>
+  </header>
+</div>

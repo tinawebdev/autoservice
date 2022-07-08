@@ -1,5 +1,6 @@
-<div id="<%= dom_id order %>">
-  <p>
-    <strong>Заказ №<%= order.id %></strong>
-  </p>
+<div class="block">
+  <p class="subtitle has-text-weight-medium"><%= link_to ("Заказ №"+order.id.to_s), order %></p>
+  <p><strong>Дата создания:</strong> <%= order.created_at %></p>
+  <p><strong>Заказчик:</strong> <%= order.customer %></p>
+  <p><strong>Исполнитель:</strong> <%= order.mechanic.name %></p>
 </div>

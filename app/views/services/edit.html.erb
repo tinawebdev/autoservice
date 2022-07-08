@@ -1,10 +1,8 @@
-<h1>Редактирование услуги</h1>
-
-<%= render "form", service: @service %>
-
-<br>
-
-<div>
-  <%= link_to "Посмотреть", @service %> |
-  <%= link_to "Назад", :back %>
+<div class="container">
+  <div class="block">
+    <h2 class="title">Редактирование услуги</h2>
+  </div>
+  <div class="block">
+    <%= render "form", service: @service %>
+  </div>
 </div>

@@ -2,7 +2,22 @@ class OrdersController < ApplicationController
   before_action :set_order, only: %i[ show edit update destroy ]
 
   def index
-    @orders = Order.all
+    if params[:order] and params[:order][:mechanic_id]
+      @orders = Order.search_by_mechanic(params[:order][:mechanic_id])
+    elsif params[:order] and params[:order][:category_id]
+      @orders = Order.search_by_category(params[:order][:category_id])
+    else
+      @orders = Order.all
+    end
+
+    case params[:filter]
+    when "customer"
+      @orders = Order.filter_by_customer
+    when "desc"
+      @orders = Order.filter_by_desc
+    when "asc"
+      @orders = Order.filter_by_asc
+    end
   end
 
   def show

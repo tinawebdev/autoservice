@@ -1,5 +1,4 @@
-<div id="<%= dom_id service %>">
-  <p>
-    <strong>Название: </strong><%= service.title %>
-  </p>
+<div class="block">
+  <p class="subtitle has-text-weight-medium"><%= link_to service.title, service %></p>
+  <p>Категория: <%= link_to service.category.name, category_path(service.category), class: "has-text-weight-medium" %></p>
 </div>

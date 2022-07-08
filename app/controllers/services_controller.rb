@@ -5,10 +5,6 @@ class ServicesController < ApplicationController
     @services = Service.all
   end
 
-  def show
-    @category = Category.find_by(id: @service.category_id)
-  end
-
   def new
     @service = Service.new
   end

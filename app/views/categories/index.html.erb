@@ -1,15 +1,19 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <div class="block">
+    <h2 class="title">Список категорий</h2>
+    <%= link_to "Добавить новую", new_category_path, class: "button is-primary" %>
+  </div>
 
-<h1>Список всех категорий</h1>
-
-<div id="category">
-  <% @categories.each do |category| %>
-    <%= render category %>
-    <p>
-      <%= link_to "Посмотреть", category %>
-    </p>
-  <% end %>
+  <div id="categories" class="block">
+    <% @categories.each do |category| %>
+      <div class="box">
+        <%= render category %>
+        <div class="buttons">
+          <%= link_to "Заказы по категории", category, class: "button" %>
+          <%= link_to "Изменить", edit_category_path(category), class: "button" %>
+          <%= button_to "Удалить", category, method: :delete, class: "button is-danger" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
-
-<%= link_to "Добавить", new_category_path %>
-

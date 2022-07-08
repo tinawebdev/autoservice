@@ -1,24 +1,13 @@
-<%= render @order %>
-
-<p>Заказчик: <%= @order.customer %></p>
-<p>Исполнитель: <%= link_to @mechanic.name, @mechanic %></p>
-
-<div>
-  <% if @services.present? %>
-    <h4>Услуги</h4>
-    <ul>
-      <% @services.each do |c| %>
-        <li>
-          <%= c.title %>
-        </li>
-      <% end %>
-    </ul>
-  <% end %>
-</div>
-
-<div>
-  <%= link_to "Редактировать", edit_order_path(@order) %> |
-  <%= link_to "Назад", :back %>
-
-  <%= button_to "Удалить", @order, method: :delete %>
+<div class="container">
+  <div class="block">
+    <h2 class="title">Информация о заказе</h2>
+  </div>
+  <div class="block box">
+    <%= render @order %></p>
+  </div>
+  <div class="buttons">
+    <%= link_to "Назад", :back, class: "button" %>
+    <%= link_to "Редактировать", edit_order_path(@order), class: "button is-primary" %>
+    <%= button_to "Удалить", @order, method: :delete, class: "button is-danger" %>
+  </div>
 </div>

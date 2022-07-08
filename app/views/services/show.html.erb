@@ -1,10 +1,13 @@
-<%= render @service %>
-
-<p>Категория: <%= link_to @category.name, @category %></p>
-
-<div>
-  <%= link_to "Редактировать", edit_service_path(@service) %> |
-  <%= link_to "Назад", :back %>
-
-  <%= button_to "Удалить", @order, method: :delete %>
+<div class="container">
+  <div class="block">
+    <h2 class="title"><%= @service.title %></h2>
+  </div>
+  <div class="block box">
+    <p>Категория: <%= link_to @service.category.name, category_path(@service.category), class: "has-text-weight-medium" %></p>
+  </div>
+  <div class="buttons">
+    <%= link_to "Назад", :back, class: "button" %>
+    <%= link_to "Редактировать", edit_service_path(@service), class: "button is-primary" %>
+    <%= button_to "Удалить", @service, method: :delete, class: "button is-danger" %>
+  </div>
 </div>

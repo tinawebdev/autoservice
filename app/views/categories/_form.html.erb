@@ -1,14 +1,19 @@
-<%= form_with(model:category) do |form| %>
-  <%= render "partials/errors", object: category %>
+<%= form_with(model: category) do |form| %>
+  <div class="box">
+    <%= render "partials/errors", object: category %>
 
-  <div>
-    <%= form.label :name, "Имя категории", style: "display: block" %>
-    <%= form.text_field :name %>
+    <div class="field">
+      <%= form.label :name, "Имя категории", class: "label" %>
+      <%= form.text_field :name, class: "input" %>
+    </div>
+
+    <div class="field buttons">
+      <% if category.new_record? %>
+        <%= form.submit "Сохранить", class: "button is-success" %>
+      <% else %>
+        <%= form.submit "Обновить", class: "button is-success" %>
+      <% end %>
+      <%= link_to "Назад", :back, class: "button" %>
+    </div>
   </div>
-
-  <% if category.new_record? %>
-    <%= form.submit "Добавить" %>
-  <% else %>
-    <%= form.submit "Обновить" %>
-  <% end %>
 <% end %>

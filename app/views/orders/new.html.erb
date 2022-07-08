@@ -1,9 +1,8 @@
-<h1>Создание нового заказа</h1>
-
-<%= render "form", order: @order %>
-
-<br>
-
-<div>
-  <%= link_to "Назад", :back %>
+<div class="container">
+  <div class="block">
+    <h2 class="title">Создание нового заказа</h2>
+  </div>
+  <div class="block">
+    <%= render "form", order: @order %>
+  </div>
 </div>

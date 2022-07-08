@@ -1,12 +1,18 @@
-<h1>Список услуг</h1>
+<div class="container">
+  <div class="block">
+    <h2 class="title">Список услуг</h2>
+    <%= link_to "Добавить новую услугу", new_service_path, class: "button is-primary" %>
+  </div>
 
-<div id="services">
-  <% @services.each do |service| %>
-    <%= render service %>
-    <p>
-      <%= link_to "Посмотреть", service %>
-    </p>
-  <% end %>
+  <div id="services" class="block">
+    <% @services.each do |service| %>
+      <div class="box">
+        <%= render service %>
+        <div class="buttons">
+          <%= link_to "Редактировать", edit_service_path(service), class: "button" %>
+          <%= button_to "Удалить", service, method: :delete, class: "button is-danger" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
-
-<%= link_to "Создать новую услугу", new_service_path %>

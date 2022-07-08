@@ -1,14 +1,19 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <div class="block">
+    <h2 class="title">Список исполнителей</h2>
+    <%= link_to "Добавить нового", new_mechanic_path, class: "button is-primary" %>
+  </div>
 
-<h1>Список исполнителей</h1>
-
-<div id="mechanics">
-  <% @mechanics.each do |mechanic| %>
-    <%= render mechanic %>
-    <p>
-      <%= link_to "Посмотреть", mechanic %>
-    </p>
-  <% end %>
+  <div id="mechanics" class="block">
+    <% @mechanics.each do |mechanic| %>
+      <div class="box">
+        <%= render mechanic %>
+        <div class="buttons">
+          <%= link_to "Посмотреть заказы", mechanic, class: "button" %>
+          <%= link_to "Редактировать", edit_mechanic_path(mechanic), class: "button" %>
+          <%= button_to "Удалить", mechanic, method: :delete, class: "button is-danger" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
-
-<%= link_to "Добавить", new_mechanic_path %>

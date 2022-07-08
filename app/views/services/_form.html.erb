@@ -1,19 +1,24 @@
 <%= form_with(model: service) do |form| %>
-  <%= render "partials/errors", object: service %>
+  <div class="box">
+    <%= render "partials/errors", object: service %>
 
-  <div>
-    <%= form.label :title, "Название", style: "display: block" %>
-    <%= form.text_field :title %>
+    <div class="field">
+      <%= form.label :title, "Название", class: "label" %>
+      <%= form.text_field :title, class: "input" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :category_id, "Категория", class: "label" %>
+      <%= form.collection_select(:category_id, Category.all, :id, :name, :prompt => 'Выбрать категорию') %>
+    </div>
+
+    <div class="field buttons">
+      <% if service.new_record? %>
+        <%= form.submit "Сохранить", class: "button is-success" %>
+      <% else %>
+        <%= form.submit "Обновить", class: "button is-success" %>
+      <% end %>
+      <%= link_to "Назад", :back, class: "button" %>
+    </div>
   </div>
-
-  <div>
-    <%= form.label :category_id, "Категория", style: "display: block" %>
-    <%= form.collection_select(:category_id, Category.all, :id, :name, :prompt => 'Выбрать категорию') %>
-  </div>
-
-  <% if service.new_record? %>
-    <%= form.submit "Добавить" %>
-  <% else %>
-    <%= form.submit "Обновить" %>
-  <% end %>
 <% end %>

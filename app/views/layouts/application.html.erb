@@ -11,6 +11,13 @@
   </head>
 
   <body>
-    <%= yield %>
+    <section class="hero is-light is-fullheight">
+      <%= render "layouts/header" %>
+      <%= render "layouts/flash" %>
+      <div class="hero-body">
+        <%= yield %>
+      </div>
+      <%= render "layouts/footer" %>
+    <section>
   </body>
 </html>

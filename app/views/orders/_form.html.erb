@@ -1,23 +1,33 @@
-<%= form_with(model:order) do |form| %>
-  <%= render "partials/errors", object: order %>
+<%= form_with(model: order) do |form| %>
+  <div class="box">
+    <%= render "partials/errors", object: order %>
 
-  <div>
-    <%= form.label :customer, "Заказчик", style: "display: block" %>
-    <%= form.text_field :customer %>
+    <div class="field">
+      <%= form.label :customer, "Заказчик", class: "label" %>
+      <%= form.text_field :customer, class: "input" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :mechanic, "Исполнитель", class: "label" %>
+      <%= form.collection_select(:mechanic_id, Mechanic.all, :id, :name, :prompt => 'Выбрать исполнителя') %>
+    </div>
+
+    <div class="field">
+      <%= form.collection_check_boxes(:service_ids, Service.all, :id, :title) do |b| %>
+        <div class="is-flex-direction-column mt-4 mb-4">
+          <%= b.label class: "checkbox" do %>
+            <%= b.check_box + b.text %>
+          <% end %>
+      <% end %>
+    </div>
+
+    <div class="field buttons">
+      <% if order.new_record? %>
+        <%= form.submit "Сохранить", class: "button is-success" %>
+      <% else %>
+        <%= form.submit "Обновить", class: "button is-success" %>
+      <% end %>
+      <%= link_to "Назад", :back, class: "button" %>
+    </div>
   </div>
-
-  <div>
-    <%= form.label :mechanic, "Исполнитель", style: "display: block" %>
-    <%= form.collection_select(:mechanic_id, Mechanic.all, :id, :name, :prompt => 'Выбрать исполнителя') %>
-  </div>
-
-  <div>
-    <%= form.collection_check_boxes(:service_ids, Service.all, :id, :title) %>
-  </div>
-
-  <% if order.new_record? %>
-    <%= form.submit "Добавить" %>
-  <% else %>
-    <%= form.submit "Обновить" %>
-  <% end %>
 <% end %>

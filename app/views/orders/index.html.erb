@@ -1,12 +1,35 @@
-<h1>Список заказов</h1>
+<div class="container">
+  <div class="block">
+    <h2 class="title">Список заказов</h2>
+    <%= link_to "Создать новый", new_order_path, class: "button is-primary" %>
+    <%= link_to "В порядке убывания", filtered_orders_path(:desc), class: "button" %>
+    <%= link_to "В порядке возрастания", filtered_orders_path(:asc), class: "button" %>
+    <%= link_to "По имени заказчика", filtered_orders_path(:customer), class: "button" %>
+  </div>
+  <div class="block is-flex is-flex-direction-row">
+    <div class="mr-4">
+      <%= form_tag(orders_path, :method => 'get') do %>
+        <%= collection_select :order, :mechanic_id, Mechanic.all, :id, :name, {:prompt => 'Поиск по исполнителю'}, {:class=>'select is-small'} %>
+        <%= submit_tag "Показать", class: "button is-small" %>
+      <% end %>
+    </div>
+    <div>
+      <%= form_tag(orders_path, :method => 'get') do %>
+        <%= collection_select :order, :category_id, Category.all, :id, :name, {:prompt => 'Поиск по категории'}, {:class=>'select is-small'} %>
+        <%= submit_tag "Показать", class: "button is-small" %>
+      <% end %>
+    </div>
+  </div>
 
-<div id="orders">
-  <% @orders.each do |order| %>
-    <%= render order %>
-    <p>
-      <%= link_to "Посмотреть", order %>
-    </p>
-  <% end %>
+  <div id="orders" class="block">
+    <% @orders.each do |order| %>
+      <div class="box">
+        <%= render order %>
+        <div class="buttons">
+          <%= link_to "Редактировать", edit_order_path(order), class: "button" %>
+          <%= button_to "Удалить", order, method: :delete, class: "button is-danger" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
-
-<%= link_to "Добавить", new_order_path %>
