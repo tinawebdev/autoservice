@@ -5,6 +5,7 @@
     <%= link_to "В порядке убывания", filtered_orders_path(:desc), class: "button" %>
     <%= link_to "В порядке возрастания", filtered_orders_path(:asc), class: "button" %>
     <%= link_to "По имени заказчика", filtered_orders_path(:customer), class: "button" %>
+    <%= link_to 'Выгрузить в xlsx', orders_path(params: request.params, format: :xlsx), target: :_blank, class: "button" %>
   </div>
   <div class="block is-flex is-flex-direction-row">
     <div class="mr-4">
@@ -21,15 +22,46 @@
     </div>
   </div>
 
-  <div id="orders" class="block">
-    <% @orders.each do |order| %>
-      <div class="box">
-        <%= render order %>
-        <div class="buttons">
-          <%= link_to "Редактировать", edit_order_path(order), class: "button" %>
-          <%= button_to "Удалить", order, method: :delete, class: "button is-danger" %>
-        </div>
-      </div>
+  <table class="table is-striped is-hoverable is-fullwidth">
+    <thead>
+      <tr>
+        <th><abbr title="N">№</abbr></th>
+        <th>№ заказа</th>
+        <th>Дата создания</th>
+        <th>Заказчик</th>
+        <th>Исполнитель</th>
+        <th>Услуги</th>
+        <th>Категории услуг</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <% @orders.each_with_index do |order, i| %>
+      <tbody>
+        <tr>
+          <th><%= i+1 %></th>
+          <th><%= link_to order.id, order %></th>
+          <td><%= order.created_at %></td>
+          <td><%= order.customer %></td>
+          <td><%= link_to order.mechanic.name, mechanic_path(order.mechanic) %></td>
+          <td>
+            <ul>
+              <% order.services.each do |s| %>
+                <li><%= s.title %></li>
+              <% end %>
+            </ul>
+          </td>
+          <td>
+            <ul>
+              <% order.services.each do |s| %>
+                <li><%= s.category.name %></li>
+              <% end %>
+            </ul>
+          </td>
+          <td><%= link_to "Редактировать", edit_order_path(order), class: "button" %></td>
+          <td><%= button_to "Удалить", order, method: :delete, class: "button is-danger" %></td>
+        </tr>
+      </tbody>
     <% end %>
-  </div>
+  </table>
 </div>

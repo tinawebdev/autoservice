@@ -18,6 +18,13 @@ class OrdersController < ApplicationController
     when "asc"
       @orders = Order.filter_by_asc
     end
+
+    respond_to do |format|
+      format.html
+      format.xlsx do
+        render xlsx: 'orders', template: 'orders/orders_list'
+      end
+    end
   end
 
   def show

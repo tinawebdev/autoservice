@@ -3,4 +3,15 @@
   <p><strong>Дата создания:</strong> <%= order.created_at %></p>
   <p><strong>Заказчик:</strong> <%= order.customer %></p>
   <p><strong>Исполнитель:</strong> <%= order.mechanic.name %></p>
+
+  <div class="content mt-4">
+    <% if order.services.any? %>
+      <p><strong>Список услуг:</strong></p>
+      <ol>
+        <% order.services.each do |s| %>
+          <li><%= s.title %></li>
+        <% end %>
+      </ol>
+    <% end %>
+  </div>
 </div>

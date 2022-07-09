@@ -1,0 +1,15 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Order") do |sheet|
+  sheet.add_row ['№', 'Дата создания', 'Заказчик', 'Исполнитель', 'Список услуг', 'Категории']
+  @orders.each do |order|
+    sheet.add_row [
+      order.id, 
+      order.created_at, 
+      order.customer, 
+      order.mechanic.name, 
+      order.services.map { |s| s.title }.join(", "), 
+      order.services.map {|s| s.category.name }.join(", "),  
+    ]
+  end
+end

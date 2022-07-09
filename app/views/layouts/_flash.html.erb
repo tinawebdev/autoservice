@@ -1,5 +1,5 @@
 <% if flash.any? %>
-  <div>
+  <div class="notification is-warning is-marginless is-radiusless">
     <% flash.each do |name, message| %>
       <%= content_tag :div, message %>
     <% end %>

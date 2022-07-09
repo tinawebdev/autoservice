@@ -12,6 +12,9 @@ gem "bootsnap", require: false
 
 gem "bulma-rails", "~> 0.9.3"
 
+gem 'caxlsx'
+gem 'caxlsx_rails'
+
 group :production do
   gem "pg"
 end
