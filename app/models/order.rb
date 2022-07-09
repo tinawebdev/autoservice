@@ -19,4 +19,8 @@ class Order < ApplicationRecord
     categories = Category.where("id LIKE ?", "%#{search}")
     categories.map { |c| c.services.map { |s| return s.orders} }
   end
+
+  def unique_categories(services)
+    services.map { |s| s.category.name }.uniq
+  end
 end

@@ -57,8 +57,8 @@
           </td>
           <td>
             <ul>
-              <% order.services.each do |s| %>
-                <li><%= s.category.name %></li>
+              <% order.unique_categories(order.services).each do |s| %>
+                <li><%= s %></li>
               <% end %>
             </ul>
           </td>
