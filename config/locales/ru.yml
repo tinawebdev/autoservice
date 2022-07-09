@@ -1,0 +1,26 @@
+ru:
+  activerecord:
+    models:
+      order: 'Заказ'
+      mechanic: 'Исполнитель'
+      service: 'Услуга'
+      category: 'Категория'
+
+    attributes:
+      service:
+        category: 'Категория'
+        title: 'Название'
+      category:
+        name: 'Название'
+      mechanic:
+        name: 'Имя'
+      order:
+        mechanic: 'Исполнитель'
+        customer: 'Заказчик'
+ 
+  messages:
+    not_saved:
+      few: 'Сохранение не удалось из-за %{count} ошибок:'
+      many: 'Сохранение не удалось из-за %{count} ошибок:'
+      one: 'Сохранение не удалось из-за %{count} ошибки:'
+      other: 'Сохранение не удалось из-за %{count} ошибки:'

@@ -14,6 +14,7 @@ gem "bulma-rails", "~> 0.9.3"
 
 gem 'caxlsx'
 gem 'caxlsx_rails'
+gem 'rails-i18n', '~> 7.0.0'
 
 group :production do
   gem "pg"
