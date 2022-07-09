@@ -1,7 +1,7 @@
 wb = xlsx_package.workbook
 
 wb.add_worksheet(name: "Order") do |sheet|
-  sheet.add_row ['№', 'Дата создания', 'Заказчик', 'Исполнитель', 'Список услуг', 'Категории']
+  sheet.add_row ['№', 'Дата создания', 'Заказчик', 'Исполнитель', 'Список услуг', 'Категории', 'Статус']
   @orders.each do |order|
     sheet.add_row [
       order.id, 
@@ -9,7 +9,8 @@ wb.add_worksheet(name: "Order") do |sheet|
       order.customer, 
       order.mechanic.name, 
       order.services.map { |s| s.title }.join(", "), 
-      order.services.map {|s| s.category.name }.join(", "),  
+      order.services.map {|s| s.category.name }.join(", "), 
+      order.status ? 'В работе' : 'Завершен'
     ]
   end
 end

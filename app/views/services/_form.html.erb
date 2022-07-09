@@ -9,7 +9,7 @@
 
     <div class="field">
       <%= form.label :category_id, "Категория", class: "label" %>
-      <%= form.collection_select(:category_id, Category.all, :id, :name, :prompt => 'Выбрать категорию') %>
+      <%= form.collection_select(:category_id, Category.all, :id, :name, {:prompt => 'Выбрать категорию'}, {:class=>'select'}) %>
     </div>
 
     <div class="field buttons">

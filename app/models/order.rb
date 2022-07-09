@@ -8,6 +8,8 @@ class Order < ApplicationRecord
   scope :filter_by_customer, -> { order(:customer) }
   scope :filter_by_desc, -> { order(created_at: :desc) }
   scope :filter_by_asc, -> { order(created_at: :asc) }
+  scope :filter_by_status_active, -> { where(status: true) }
+  scope :filter_by_status_done, -> { where(status: false) }
 
   def self.search_by_mechanic(search)
     where("mechanic_id LIKE ?", "%#{search}")

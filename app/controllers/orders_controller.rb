@@ -17,6 +17,10 @@ class OrdersController < ApplicationController
       @orders = Order.filter_by_desc
     when "asc"
       @orders = Order.filter_by_asc
+    when "status_active"
+      @orders = Order.filter_by_status_active
+    when "status_done"
+      @orders = Order.filter_by_status_done
     end
 
     respond_to do |format|
@@ -67,6 +71,6 @@ class OrdersController < ApplicationController
     end
 
     def order_params
-      params.require(:order).permit(:created_at, :customer, :mechanic_id, service_ids: [])
+      params.require(:order).permit(:status, :created_at, :customer, :mechanic_id, service_ids: [])
     end
 end

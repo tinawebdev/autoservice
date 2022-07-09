@@ -5,6 +5,8 @@
     <%= link_to "В порядке убывания", filtered_orders_path(:desc), class: "button" %>
     <%= link_to "В порядке возрастания", filtered_orders_path(:asc), class: "button" %>
     <%= link_to "По имени заказчика", filtered_orders_path(:customer), class: "button" %>
+    <%= link_to "В работе", filtered_orders_path(:status_active), class: "button" %>
+    <%= link_to "Завершенные", filtered_orders_path(:status_done), class: "button" %>
     <%= link_to 'Выгрузить в xlsx', orders_path(params: request.params, format: :xlsx), target: :_blank, class: "button" %>
   </div>
   <div class="block is-flex is-flex-direction-row">
@@ -26,6 +28,7 @@
     <thead>
       <tr>
         <th><abbr title="N">№</abbr></th>
+        <th>Cтатус</th>
         <th>№ заказа</th>
         <th>Дата создания</th>
         <th>Заказчик</th>
@@ -40,8 +43,9 @@
       <tbody>
         <tr>
           <th><%= i+1 %></th>
+          <th><%= visibility(order) %></th>
           <th><%= link_to order.id, order %></th>
-          <td><%= order.created_at %></td>
+          <td><%= order.created_at.to_formatted_s(:db) %></td>
           <td><%= order.customer %></td>
           <td><%= link_to order.mechanic.name, mechanic_path(order.mechanic) %></td>
           <td>
