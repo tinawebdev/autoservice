@@ -5,15 +5,4 @@
   <div class="buttons">
     <%= link_to "Назад", :back, class: "button" %>
   </div>
-  <% if @services.any? %>
-    <% @services.each do |s| %>
-      <% s.orders.each do |o| %>
-        <div class="box"><%= render o %></div>
-      <% end %>
-    <% end %>
-  <% else %>
-    <div class="box">
-      <p>Заказов в данной категории еще нет<p>
-    </div>
-  <% end %>
 </div>

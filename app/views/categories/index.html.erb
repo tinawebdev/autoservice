@@ -9,7 +9,6 @@
       <div class="box">
         <%= render category %>
         <div class="buttons">
-          <%= link_to "Заказы по категории", category, class: "button" %>
           <%= link_to "Изменить", edit_category_path(category), class: "button" %>
           <%= button_to "Удалить", category, method: :delete, class: "button is-danger" %>
         </div>
