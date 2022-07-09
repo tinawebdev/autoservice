@@ -24,7 +24,7 @@
     </div>
   </div>
 
-  <table class="table is-striped is-hoverable is-fullwidth">
+  <table class="table is-hoverable is-fullwidth">
     <thead>
       <tr>
         <th><abbr title="N">№</abbr></th>
@@ -44,7 +44,7 @@
       <% @orders.each_with_index do |order, i| %>
           <tr>
             <th><%= i+1 %></th>
-            <th><%= order.status %></th>
+            <th><%= visibility(order) %></th>
             <th><%= link_to order.id, order %></th>
             <td><%= order.created_at.to_formatted_s(:db) %></td>
             <td><%= order.customer %></td>
