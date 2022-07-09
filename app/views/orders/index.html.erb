@@ -46,7 +46,7 @@
             <th><%= i+1 %></th>
             <th><%= visibility(order) %></th>
             <th><%= link_to order.id, order %></th>
-            <td><%= order.created_at.to_formatted_s(:db) %></td>
+            <td><%= order.created_at.strftime('%d.%m.%y %H:%M:%S') %></td>
             <td><%= order.customer %></td>
             <td><%= link_to order.mechanic.name, mechanic_path(order.mechanic) %></td>
             <td>
