@@ -12,12 +12,12 @@ class Order < ApplicationRecord
   scope :filter_by_status_done, -> { where(status: false) }
 
   def self.search_by_mechanic(search)
-    where("mechanic_id LIKE ?", "%#{search}")
+    where("mechanic_id = ?", search)
   end
 
   def self.search_by_category(search)
-    categories = Category.where("id LIKE ?", "%#{search}")
-    categories.map { |c| c.services.map { |s| return s.orders} }
+    category = Category.where("id = ?", search)
+    category[0].services.map { |s| return s.orders }
   end
 
   def unique_categories(services)
